@@ -38,6 +38,7 @@ class torController(object):
 
 	def newIdentity(self):
 		self.tn.write("SIGNAL NEWNYM\n")
+		time.sleep(.5)
 		status = self.tn.read_very_eager()
 		if(status=="250 OK\r\n"):
 			print("Successfully got a New Identity")
