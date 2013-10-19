@@ -8,9 +8,9 @@
 	PREREQUISITE TO USING THIS:
 	1) You must edit your /etc/tor/torrc file to turn on ControlPort (default is 9051) 
 	2) You must edit your /etc/tor/torrc with your HashedControlPassword you want to use,
-       this can be obtained via the command 'tor --hash-password passwordGoesHere'
+           this can be obtained via the command 'tor --hash-password passwordGoesHere'
 
-    usage:
+    	usage:
     	from torController import torController
     	tor = torController(9051, "passwordGoesHere")
     	tor.connect()
