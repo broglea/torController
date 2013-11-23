@@ -40,16 +40,21 @@ class torController(object):
 		if country is not None:
 			self.tn.write("SETCONF ExitNodes={" + country + "}\r\n")
 			time.sleep(.5)
+			read()
 			self.tn.write("SETCONF StrictNodes=1\r\n")
 			time.sleep(.5)
+			read()
 		if country is "any":
 			self.tn.write("SETCONF StrictNodes=0\r\n")
 			time.sleep(.5)
+			read()
 		self.tn.write("SIGNAL NEWNYM\r\n")
 		time.sleep(.5)
+		read()
+
+	def read(self):
 		status = self.tn.read_very_eager()
 		if(status=="250 OK\r\n"):
 			print("Successfully got a New Identity")
 		else:
 			raise Exception("Error while getting a New Identity: " + status)
-
