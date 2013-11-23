@@ -36,11 +36,17 @@ class torController(object):
 		else:
 			raise Exception("Could not authenticate to Tor Controller: " + status)
 
-	def newIdentity(self):
-		self.tn.write("SIGNAL NEWNYM\n")
+	def newIdentity(self, country=None):
+		if country is not None:
+			self.tn.write("SETCONF ExitNodes={" + country + "}\r\n")
+			self.tn.write("SETCONF StrictNodes=1\r\n")
+		if country is "any":
+			self.tn.write("SETCONF StrictNodes=0\r\n")
+		self.tn.write("SIGNAL NEWNYM\r\n")
 		time.sleep(.5)
 		status = self.tn.read_very_eager()
 		if(status=="250 OK\r\n"):
 			print("Successfully got a New Identity")
 		else:
 			raise Exception("Error while getting a New Identity: " + status)
+
