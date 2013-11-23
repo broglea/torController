@@ -42,7 +42,7 @@ class torController(object):
 			time.sleep(.5)
 			self.read()
 		elif country is not None:
-			self.tn.write("SETCONF ExitNode={" + country + "}")
+			self.tn.write("SETCONF ExitNode={" + country + "}\r\n")
 			time.sleep(.5)
 			self.read()
 			self.tn.write("SETCONF StrictNodes=1\r\n")
