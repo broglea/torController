@@ -12,4 +12,5 @@ A very simple and basic python torController that uses telnet to the localhost t
             from torController import torController
             tor = torController(9051, "passwordGoesHere")
             tor.connect()
-            tor.newIdentity()
+            tor.newIdentity()        <- Gets a new identity using any random country
+            tor.newIdentity("US")    <- Gets a new identity from specified 2 letter ISO country code
